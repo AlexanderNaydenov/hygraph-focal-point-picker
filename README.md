@@ -2,7 +2,9 @@
 
 A [Hygraph App Framework](https://hygraph.com/docs/app-framework) app that lets content editors pick an image focal point on **Asset** entries. Coordinates are stored as JSON (`{ x, y }` percentages) for use with CSS `object-position` on the frontend.
 
-**Live demo:** https://hygraph-focal-point-picker.vercel.app
+**Demo deployment:** https://hygraph-focal-point-picker.vercel.app
+
+<img width="1432" height="621" alt="Focal Point demo image" src="https://github.com/user-attachments/assets/340f9cdf-32a4-48b4-ac0b-756a63a02b89" />
 
 ## Features
 
