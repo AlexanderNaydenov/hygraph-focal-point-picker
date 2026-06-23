@@ -101,18 +101,37 @@ Open the sharing URL in your Hygraph project and complete the setup flow.
 { "x": 35, "y": 20 }
 ```
 
-Query from the Content API:
+Query from the Content API.
+
+When querying an **Asset** entry directly, `url` is a system field on the model — there is no `file` relation:
 
 ```graphql
-query {
-  asset(where: { id: "..." }) {
+query AssetFocalPoint($id: ID!, $locale: Locale!) {
+  asset(where: { id: $id }, locales: [$locale]) {
     focalPoint
-    file {
+    url
+    fileName
+    width
+    height
+  }
+}
+```
+
+When the image comes from an **Asset relation** on another model (e.g. `heroImage`), query through that field:
+
+```graphql
+query PostWithFocalPoint {
+  post(where: { slug: "my-post" }) {
+    heroImage {
+      focalPoint
       url
+      fileName
     }
   }
 }
 ```
+
+If `focalPoint` is localized, pass `locales: [en]` (or your locale) on the query, or use `localizations { locale focalPoint url }`.
 
 Use on the frontend:
 
